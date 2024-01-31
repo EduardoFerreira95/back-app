@@ -1,0 +1,25 @@
+name: "Production CI/CD"
+run-name: Back-app CI/CD🚀
+on: [ "push" ]
+
+jobs:
+  Unit-Test:
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+
+      - name: Run Unit Tests
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test
